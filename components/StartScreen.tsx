@@ -121,11 +121,11 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
         >
           <div className="md:w-1/2 flex-shrink-0 flex flex-col items-center md:items-start">
             <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 leading-tight">
-                The New You
+              <h1 className="text-4xl md:text-5xl  font-bold text-gray-900 leading-tight">
+                Style cho bạn
               </h1>
               <p className="mt-2 text-md text-gray-600">
-                Drag the slider to see your transformation.
+                Thử mọi góc nhìn (comming soon).
               </p>
             </div>
             
@@ -157,14 +157,19 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
                     onClick={reset}
                     className="w-full sm:w-auto px-6 py-3 text-base font-semibold text-gray-700 bg-gray-200 rounded-md cursor-pointer hover:bg-gray-300 transition-colors"
                   >
-                    Use Different Photo
+                    Thêm ảnh khác
                   </button>
                   <button 
-                    onClick={() => onModelFinalized(generatedModelUrl)}
-                    className="w-full sm:w-auto relative inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gray-900 rounded-md cursor-pointer group hover:bg-gray-700 transition-colors"
+                    // onClick={() => onModelFinalized(generatedModelUrl)}
+                    className="w-full sm:w-auto disabled relative inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gray-900 rounded-md cursor-pointer group hover:bg-gray-700 transition-colors"
                   >
-                    Proceed to Styling &rarr;
+                    <div>
+                        Thử trang phục &rarr;
+                        <div className="text-sm">comming soon</div>
+                    </div>
+
                   </button>
+
                 </motion.div>
               )}
             </AnimatePresence>
