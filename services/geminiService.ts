@@ -4,6 +4,7 @@
 */
 
 import { GoogleGenAI, GenerateContentResponse, Modality } from "@google/genai";
+import axios from "axios";
 
 const fileToPart = async (file: File) => {
     const dataUrl = await new Promise<string>((resolve, reject) => {
@@ -59,16 +60,31 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
 const model = 'gemini-2.5-flash-image';
 
 export const generateModelImage = async (userImage: File): Promise<string> => {
-    const userImagePart = await fileToPart(userImage);
-    const prompt = "You are an expert fashion photographer AI. Transform the person in this image into a full-body fashion model photo suitable for an e-commerce website. The background must be a clean, neutral studio backdrop (light gray, #f0f0f0). The person should have a neutral, professional model expression. Preserve the person's identity, unique features, and body type, but place them in a standard, relaxed standing model pose. The final image must be photorealistic. Return ONLY the final image.";
-    const response = await ai.models.generateContent({
-        model,
-        contents: { parts: [userImagePart, { text: prompt }] },
-        config: {
-            responseModalities: [Modality.IMAGE, Modality.TEXT],
-        },
-    });
-    return handleApiResponse(response);
+    console.log(window.location.pathname.split('/'))
+    const apiKey = window.location.pathname.split('/');
+    if (apiKey.length < 3 || apiKey[2].trim() == '') {
+        throw new Error()
+    }
+    const formData = new FormData();
+    formData.append("file", userImage);
+
+    try {
+        const res = await axios.post(
+            "https://improved-space-sniffle-qpx5rqw6xppf9rwx-8081.app.github.dev/api/gemini/model-image",
+            formData,
+            {
+                headers: {
+                    "x-api-key":apiKey[2]
+                }
+            }
+        );
+
+        console.log("✅ Upload success:", res.data);
+        console.log(res.data);
+        return res.data;
+    } catch (err) {
+        console.error("❌ Upload failed:", err.response || err.message);
+    }
 };
 
 export const generateVirtualTryOnImage = async (modelImageUrl: string, garmentImage: File): Promise<string> => {

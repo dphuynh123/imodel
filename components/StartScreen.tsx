@@ -38,7 +38,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
             const result = await generateModelImage(file);
             setGeneratedModelUrl(result);
         } catch (err) {
-            setError(getFriendlyErrorMessage(err, 'Failed to create model'));
+            setError("Lỗi khi khởi tạo hình ảnh , vui lòng kiểm tra api key");
             setUserImageUrl(null);
         } finally {
             setIsGenerating(false);
@@ -87,6 +87,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
                   Bạn đã bao giờ tự hỏi một bộ trang phục sẽ trông như thế nào trên người mình chưa? Đừng đoán nữa. Hãy tải ảnh lên và tự mình trải nghiệm. AI của chúng tôi sẽ tạo ra người mẫu cá nhân cho bạn, sẵn sàng để bạn thử nghiệm mọi thứ.
               </p>
               <hr className="my-8 border-gray-200" />
+
               <div className="flex flex-col items-center lg:items-start w-full gap-3">
                 <label htmlFor="image-upload-start" className="w-full relative flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gray-900 rounded-md cursor-pointer group hover:bg-gray-700 transition-colors">
                   <UploadCloudIcon className="w-5 h-5 mr-3" />
