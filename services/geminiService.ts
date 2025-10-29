@@ -61,8 +61,8 @@ const model = 'gemini-2.5-flash-image';
 
 export const generateModelImage = async (userImage: File): Promise<string> => {
     console.log(window.location.pathname.split('/'))
-    const apiKey = window.location.pathname.split('/');
-    if (apiKey.length < 3 || apiKey[2].trim() == '') {
+    const apiKey = window.location.href.split('/?');
+    if (apiKey.length < 2) {
         throw new Error()
     }
     const formData = new FormData();
@@ -70,20 +70,20 @@ export const generateModelImage = async (userImage: File): Promise<string> => {
 
     try {
         const res = await axios.post(
-            "https://improved-space-sniffle-qpx5rqw6xppf9rwx-8081.app.github.dev/api/gemini/model-image",
+            "http://localhost:8081/api/gemini/model-image",
             formData,
             {
                 headers: {
-                    "x-api-key":apiKey[2]
+                    "x-api-key":apiKey[1]
                 }
             }
         );
 
-        console.log("✅ Upload success:", res.data);
+        console.log("Upload success:", res.data);
         console.log(res.data);
         return res.data;
     } catch (err) {
-        console.error("❌ Upload failed:", err.response || err.message);
+        console.error("Upload failed:", err.response || err.message);
     }
 };
 
