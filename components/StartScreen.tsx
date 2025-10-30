@@ -121,12 +121,12 @@ const StartScreen: React.FC<StartScreenProps> = ({onModelFinalized}) => {
                                 <input id="image-upload-start" type="file" className="hidden"
                                        accept="image/png, image/jpeg, image/webp, image/avif, image/heic, image/heif"
                                        onChange={handleFileChange}/>
-                                <p className="text-gray-500 text-sm">Chọn ảnh rõ nét, toàn thân. Ảnh chỉ chụp khuôn mặt
+                                {/* <p className="text-gray-500 text-sm">Chọn ảnh rõ nét, toàn thân. Ảnh chỉ chụp khuôn mặt
                                     cũng được, nhưng ảnh toàn thân sẽ cho kết quả tốt nhất.</p>
                                 <p className="text-gray-500 text-xs mt-1">Bằng cách tải lên, bạn đồng ý không tạo ra nội
                                     dung độc hại, khiêu dâm hoặc bất hợp pháp. Dịch vụ này chỉ dành cho mục đích sử dụng
                                     sáng tạo và có trách nhiệm.</p>
-                                {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+                                {error && <p className="text-red-500 text-sm mt-2">{error}</p>} */}
                             </div>
                         </div>
                     </div>
