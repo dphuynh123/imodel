@@ -13,15 +13,15 @@ export default function Header(): React.ReactElement {
     return <header className="border-b flex">
         <div className="w-full grid grid-cols-2 h-16 items-center justify-between px-4 ">
             <div className="flex col-span-1 items-center gap-2">
-                {/*<img*/}
-                {/*    src="/placeholder.svg"*/}
-                {/*    alt="ForLabJP Logo"*/}
-                {/*    width={32}*/}
-                {/*    height={32}*/}
-                {/*    className="rounded-md"*/}
-                {/*/>*/}
-                <NavLink to="/" className="text-lg font-semibold">
-                    <span className="text-xl font-bold">Imodel</span>
+                <NavLink to="/" className="text-lg font-semibold flex">
+                    <img
+                        src={`${import.meta.env.BASE_URL}ft-logo.png`}
+                        alt="ForLabJP Logo"
+                        width={32}
+                        height={32}
+                        className="rounded-md"
+                    />
+                    {/* <span className="text-xl font-bold">I Modeli</span> */}
                 </NavLink>
             </div>
 
@@ -32,9 +32,19 @@ export default function Header(): React.ReactElement {
                     </div>
                 </NavLink>
 
+                <NavLink to="/contact" className="text-sm font-medium hover:underline underline-offset-4">
+                    Liên hệ
+                </NavLink>
+
+                <NavLink to="/pricing" className="text-sm font-medium hover:underline underline-offset-4">
+                    Thanh toán
+                </NavLink>
+
                 <NavLink to="/disco" className="text-sm font-medium hover:underline underline-offset-4">
                     Khám phá
                 </NavLink>
+
+                
 
             </div>
 

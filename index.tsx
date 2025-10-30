@@ -11,6 +11,8 @@ import { BrowserRouter, NavLink, Route, Routes } from "react-router";
 import Login from "./Login.tsx";
 import Header from './Header.tsx';
 import GalleryGrid from '@/components/GalleryGrid.tsx';
+import Pricing from '@/components/sections/pricing/default.tsx';
+import ContactUs from '@/components/ContactUs.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -26,6 +28,8 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/about" element={<div>About</div>} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact" element={<ContactUs />} />
           <Route path="/disco" element={<GalleryGrid />} />
           <Route path="/login" element={<Login />} />
         </Routes>
