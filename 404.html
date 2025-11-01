@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <script type="text/javascript">
-      // Capture the full path after /imodel
-      const redirectPath = location.pathname.replace('/imodel', '');
-      // Keep search params and hash if any
-      const fullRedirect = redirectPath + location.search + location.hash;
-      sessionStorage.setItem('redirect', fullRedirect);
-      // Redirect to root of SPA
+      // Capture path, query, and hash
+      const redirectPath = window.location.pathname.replace('/imodel', '');
+      const fullPath = '/imodel/' + (redirectPath.startsWith('/') ? redirectPath.slice(1) : redirectPath) 
+                      + window.location.search + window.location.hash;
+
+      // Save and redirect
+      sessionStorage.setItem('redirect', fullPath);
       window.location.href = '/imodel/';
     </script>
   </head>
